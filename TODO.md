@@ -1,4 +1,4 @@
-# Scanly deliverables
+# DBScan deliverables
 
 ## 1. Camera scanner and onboarding
 - [x] First-run onboarding requests camera permission and presents a concise 10-second scanning tutorial, including a clear re-request path when permission is denied.

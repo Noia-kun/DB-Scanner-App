@@ -13,7 +13,7 @@ import { ActionButton, AppMark, ModeSegmentedControl, palette, StatusPill } from
 import { BARCODE_TYPES, useScanStore, type ScanMode } from "@/lib/scan-store";
 
 const TUTORIAL = [
-  { eyebrow: "01 / 03", title: "Center the code", detail: "Place a QR or barcode inside the mint frame. Scanly will detect it locally." },
+  { eyebrow: "01 / 03", title: "Center the code", detail: "Place a QR or barcode inside the mint frame. DBScan will detect it locally." },
   { eyebrow: "02 / 03", title: "Hold steady", detail: "A clean, even surface helps the decoder read tiny details in low light." },
   { eyebrow: "03 / 03", title: "Stay in control", detail: "Switch QR and Barcode modes at any time without leaving the viewfinder." },
 ];

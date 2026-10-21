@@ -18,10 +18,10 @@ export const palette = {
 
 export function AppMark({ compact = false }: { compact?: boolean }) {
   return (
-    <View style={[styles.mark, compact && styles.markCompact]} accessible accessibilityLabel="Scanly">
+    <View style={[styles.mark, compact && styles.markCompact]} accessible accessibilityLabel="DBScan">
       <View style={styles.markCornerTop} />
       <View style={styles.markCornerBottom} />
-      {!compact && <Text style={styles.markText}>SCANLY</Text>}
+      {!compact && <Text style={styles.markText}>DBSCAN</Text>}
     </View>
   );
 }

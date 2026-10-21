@@ -26,7 +26,7 @@ export default function SettingsScreen() {
     const clear = () => removeAll();
     if (Platform.OS === "web") {
       if (typeof window !== "undefined" && window.confirm("Clear every saved scan from this device?")) clear();
-    } else Alert.alert("Clear history?", "This removes every saved scan from Scanly.", [{ text: "Cancel", style: "cancel" }, { text: "Clear", style: "destructive", onPress: clear }]);
+    } else Alert.alert("Clear history?", "This removes every saved scan from DBScan.", [{ text: "Cancel", style: "cancel" }, { text: "Clear", style: "destructive", onPress: clear }]);
   };
 
   const feedbackToggle = (key: "haptic" | "sound" | "autoCopy") => {
@@ -41,7 +41,7 @@ export default function SettingsScreen() {
       <Text style={styles.version}>v1.0</Text>
     </View>
 
-    <View style={styles.intro}><Text style={styles.introTitle}>Make every scan feel right.</Text><Text style={styles.introDetail}>Tune the small details. Scanly keeps the defaults calm, local, and fast.</Text></View>
+    <View style={styles.intro}><Text style={styles.introTitle}>Make every scan feel right.</Text><Text style={styles.introDetail}>Tune the small details. DBScan keeps the defaults calm, local, and fast.</Text></View>
 
     <View style={styles.section}><SectionLabel>Scanner</SectionLabel><View style={styles.card}>
       <SettingRow icon="qr-code-2" title="Default scan mode" detail="Choose what opens first" onPress={() => setShowModes((value) => !value)}><View style={styles.valuePill}><Text style={styles.valueText}>{settings.defaultMode === "qr" ? "QR" : "Barcode"}</Text><MaterialIcons name="expand-more" size={18} color={palette.muted} /></View></SettingRow>
@@ -54,7 +54,7 @@ export default function SettingsScreen() {
     <View style={styles.section}><SectionLabel>Appearance</SectionLabel><View style={styles.card}><SettingRow icon="dark-mode" title="Dark mode" detail="Always on for scan clarity"><View style={styles.valuePill}><Text style={styles.valueText}>ON</Text><MaterialIcons name="check" size={18} color={palette.mint} /></View></SettingRow></View></View>
 
     <View style={styles.section}><SectionLabel>Data</SectionLabel><View style={styles.card}><SettingRow icon="delete-outline" title="Clear scan history" detail={`${history.length} saved result${history.length === 1 ? "" : "s"} on this device`} onPress={clearHistory} danger><MaterialIcons name="chevron-right" size={21} color={palette.muted} /></SettingRow></View></View>
-    <Text style={styles.footer}>Scanly decodes locally. No scan leaves your device unless you choose to open or share it.</Text>
+    <Text style={styles.footer}>DBScan decodes locally. No scan leaves your device unless you choose to open or share it.</Text>
   </ScrollView></View>;
 }
 

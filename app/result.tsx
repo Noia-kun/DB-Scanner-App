@@ -22,7 +22,7 @@ export default function ResultScreen() {
   const copy = async () => { try { await Clipboard.setStringAsync(scan.data); setActionError(null); setCopied(true); setTimeout(() => setCopied(false), 1600); } catch { setActionError("Could not copy this result. Try selecting the text instead."); } };
   const open = async () => { try { await Linking.openURL(scan.data); setActionError(null); } catch { setActionError("This link could not be opened on the current device."); } };
   const product = async () => { try { await Linking.openURL(`https://www.google.com/search?tbm=shop&q=${encodeURIComponent(scan.data)}`); setActionError(null); } catch { setActionError("Product lookup needs a browser connection."); } };
-  const share = async () => { try { await Share.share({ message: scan.data, title: "Scanly result" }); setActionError(null); } catch { setActionError("Sharing is unavailable right now. You can still copy the result."); } };
+  const share = async () => { try { await Share.share({ message: scan.data, title: "DBScan result" }); setActionError(null); } catch { setActionError("Sharing is unavailable right now. You can still copy the result."); } };
 
   return <View style={styles.screen}><ScrollView contentContainerStyle={{ paddingBottom: Math.max(insets.bottom, 24) + 20 }} showsVerticalScrollIndicator={false}>
     <View style={[styles.topBar, { paddingTop: Math.max(insets.top, 16) + 4 }]}><Pressable onPress={() => router.back()} style={styles.backButton} accessibilityRole="button" accessibilityLabel="Close scan result"><MaterialIcons name="close" size={22} color={palette.text} /></Pressable><View style={styles.topBarRight}><StatusPill label="Decoded" /><Text style={styles.time}>{formatScanTime(scan.createdAt)}</Text></View></View>

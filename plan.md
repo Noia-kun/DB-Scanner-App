@@ -1,8 +1,8 @@
-# Scanly — implementation plan
+# DBScan — implementation plan
 
 ## Product approach
 
-Scanly is a one-handed, local-first scanner app for QR and 1D/2D barcodes. The primary experience stays on a single camera surface: a persistent segmented control changes the active decoder and the guidance copy without navigating away. Results become a focused action sheet with copy, share, URL open, and product lookup actions. History and settings are reachable from the bottom tab bar and use on-device state so offline scanning remains useful.
+DBScan is a one-handed, local-first scanner app for QR and 1D/2D barcodes. The primary experience stays on a single camera surface: a persistent segmented control changes the active decoder and the guidance copy without navigating away. Results become a focused action sheet with copy, share, URL open, and product lookup actions. History and settings are reachable from the bottom tab bar and use on-device state so offline scanning remains useful.
 
 The first implementation uses Expo Router + React Native + TypeScript + NativeWind-compatible React Native primitives. `expo-camera` supplies native permission, camera preview, and barcode callbacks; `expo-image-picker` supplies the optional gallery import. A small in-memory/local storage model keeps the prototype deterministic in Preview and provides a clear seam for persistence. The UI includes simulated warm-up, offline, denied, poor-lighting, unrecognized, success, retry, and alternate-mode states so the product can be reviewed without a physical camera.
 
@@ -14,7 +14,7 @@ The first implementation uses Expo Router + React Native + TypeScript + NativeWi
 - `app/(tabs)/_layout.tsx`: accessible bottom tab navigation and dark theme shell.
 - `lib/scan-store.ts`: shared scan types, sample state, and local persistence helpers.
 - `components/scan-ui.tsx`: reusable buttons, segmented control, result cards, and state badges.
-- `assets/images/*`: Scanly brand icon set used by Expo native configuration.
+- `assets/images/*`: DBScan brand icon set used by Expo native configuration.
 
 ## Design direction
 
@@ -29,8 +29,8 @@ Three possible directions were considered: “Night transit control room” (0.0
 - **Animation:** mode switch uses a quick 180ms slide/fade; live status dots pulse subtly; result feedback uses a single mint flash and never blocks the next action.
 - **Typography System:** system sans for navigation and labels, with bold condensed-feeling weight hierarchy created through letter spacing and uppercase metadata; readable 16–18px body copy.
 - **Brand Essence:** “The scanner that stays out of your way.” Precise, calm, ready.
-- **Brand Voice:** concise and reassuring. Example lines: “Hold steady. Scanly is watching for a code.” / “Readable signal. Choose what happens next.”
-- **Wordmark & Logo:** a compact mint square with two offset corner brackets, suggesting both a scan frame and a forward-moving route marker; the wordmark is set as `SCANLY` with generous tracking.
+- **Brand Voice:** concise and reassuring. Example lines: “Hold steady. DBScan is watching for a code.” / “Readable signal. Choose what happens next.”
+- **Wordmark & Logo:** a compact mint square with two offset corner brackets, suggesting both a scan frame and a forward-moving route marker; the wordmark is set as `DBSCAN` with generous tracking.
 - **Signature Brand Color:** signal mint `#B8F36B`.
 
 ## Functional decisions
