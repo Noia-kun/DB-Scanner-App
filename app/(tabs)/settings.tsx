@@ -5,8 +5,9 @@ import { useState } from "react";
 import { Alert, Platform, Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { palette, SectionLabel } from "@/components/scan-ui";
+import { ActionButton, palette, SectionLabel, StatusPill } from "@/components/scan-ui";
 import { useScanStore, type ScanMode } from "@/lib/scan-store";
+import { useCompanyStore } from "@/lib/company-store";
 
 function SettingRow({ icon, title, detail, children, onPress, danger = false }: { icon: React.ComponentProps<typeof MaterialIcons>["name"]; title: string; detail: string; children?: React.ReactNode; onPress?: () => void; danger?: boolean }) {
   return <Pressable onPress={onPress} style={styles.settingRow} accessibilityRole={onPress ? "button" : undefined} accessibilityLabel={title} accessibilityHint={detail}>
@@ -20,13 +21,23 @@ export default function SettingsScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { settings, updateSettings, removeAll, history } = useScanStore();
+  const { session, apiMode, companyOffline, setCompanyOffline, syncStatus, syncMessage, queue, syncNow, retryBlocked, signOut } = useCompanyStore();
   const [showModes, setShowModes] = useState(false);
+  const syncLabel = syncStatus === "syncing" ? "Syncing" : syncStatus === "queued" ? `${queue.length} queued` : syncStatus === "error" ? "Review needed" : syncStatus === "offline" ? "Offline" : session ? "Synced" : "Not connected";
+  const syncTone = syncStatus === "error" ? "danger" : syncStatus === "offline" ? "offline" : syncStatus === "queued" ? "warning" : "live";
 
   const clearHistory = () => {
     const clear = () => removeAll();
     if (Platform.OS === "web") {
       if (typeof window !== "undefined" && window.confirm("Clear every saved scan from this device?")) clear();
     } else Alert.alert("Clear history?", "This removes every saved scan from DBScan.", [{ text: "Cancel", style: "cancel" }, { text: "Clear", style: "destructive", onPress: clear }]);
+  };
+
+  const forceRetry = (actionId: string) => {
+    const approve = () => void retryBlocked(actionId, true);
+    if (Platform.OS === "web") {
+      if (typeof window !== "undefined" && window.confirm("Force overwrite the newer company value and retry this action?")) approve();
+    } else Alert.alert("Force overwrite?", "This explicitly replaces the newer company value with your queued edit.", [{ text: "Cancel", style: "cancel" }, { text: "Overwrite", style: "destructive", onPress: approve }]);
   };
 
   const feedbackToggle = (key: "haptic" | "sound" | "autoCopy") => {
@@ -51,6 +62,12 @@ export default function SettingsScreen() {
       <SettingRow icon="content-copy" title="Auto-copy result" detail="Copy decoded text as soon as it reads"><Switch value={settings.autoCopy} onValueChange={() => feedbackToggle("autoCopy")} trackColor={{ false: palette.border, true: palette.sandDim }} thumbColor={settings.autoCopy ? palette.sand : palette.muted} accessibilityLabel="Auto-copy result" /></SettingRow>
     </View></View>
 
+    <View style={styles.section}><SectionLabel>Company system</SectionLabel><View style={styles.card}>
+      {session ? <><SettingRow icon="account-circle" title={session.employee.name} detail={`${session.employee.email} · ${session.employee.role} role`}><StatusPill label={session.employee.role} /></SettingRow><SettingRow icon="sync" title="Cloud sync" detail={syncMessage}><StatusPill label={syncLabel} tone={syncTone} /></SettingRow><View style={styles.cloudActions}><ActionButton label="Sync now" icon="sync" onPress={() => void syncNow()} style={{ flex: 1 }} /><ActionButton label="Sign out" icon="logout" onPress={() => void signOut()} style={{ flex: 1 }} /></View></> : <SettingRow icon="login" title="Sign in to company system" detail={apiMode === "mock" ? "Preview mock API · employee roles enabled" : "Use your existing employee account"} onPress={() => router.push("/login")}><MaterialIcons name="chevron-right" size={21} color={palette.muted} /></SettingRow>}
+      <SettingRow icon={companyOffline ? "cloud-off" : "cloud-queue"} title="Simulate company offline" detail="Local scanning continues; cloud actions queue safely"><Switch value={companyOffline} onValueChange={setCompanyOffline} trackColor={{ false: palette.border, true: palette.sandDim }} thumbColor={companyOffline ? palette.sand : palette.muted} accessibilityLabel="Simulate company offline" /></SettingRow>
+      {queue.filter((action) => action.status === "blocked").map((action) => <View key={action.id} style={styles.blockedRow}><Text style={styles.blockedTitle}>{action.kind.replace("_", " ")} · {action.code}</Text><Text style={styles.blockedDetail}>{action.error ?? "Needs review before sync."}</Text><View style={styles.blockedActions}><ActionButton label="Retry" icon="refresh" onPress={() => void retryBlocked(action.id)} style={{ flex: 1 }} /><ActionButton label="Force overwrite" icon="warning" onPress={() => forceRetry(action.id)} style={{ flex: 1 }} /></View></View>)}
+    </View></View>
+
     <View style={styles.section}><SectionLabel>Appearance</SectionLabel><View style={styles.card}><SettingRow icon="palette" title="Company theme" detail="Deep blue and sand beige highlights"><View style={styles.valuePill}><Text style={styles.valueText}>ON</Text><MaterialIcons name="check" size={18} color={palette.brand} /></View></SettingRow></View></View>
 
     <View style={styles.section}><SectionLabel>Data</SectionLabel><View style={styles.card}><SettingRow icon="delete-outline" title="Clear scan history" detail={`${history.length} saved result${history.length === 1 ? "" : "s"} on this device`} onPress={clearHistory} danger><MaterialIcons name="chevron-right" size={21} color={palette.muted} /></SettingRow></View></View>
@@ -70,6 +87,11 @@ const styles = StyleSheet.create({
   introDetail: { color: palette.muted, fontSize: 14, lineHeight: 21, marginTop: 7, maxWidth: 340 },
   section: { paddingHorizontal: 20, marginBottom: 24, gap: 10 },
   card: { borderRadius: 20, backgroundColor: palette.panel, borderWidth: 1, borderColor: palette.border, overflow: "hidden" },
+  cloudActions: { flexDirection: "row", gap: 8, paddingHorizontal: 14, paddingBottom: 12 },
+  blockedRow: { marginHorizontal: 14, marginBottom: 12, padding: 12, borderRadius: 14, backgroundColor: palette.ivory, borderWidth: 1, borderColor: palette.sandDim },
+  blockedTitle: { color: palette.text, fontSize: 12, fontWeight: "900" },
+  blockedDetail: { color: palette.danger, fontSize: 11, lineHeight: 16, marginTop: 4 },
+  blockedActions: { flexDirection: "row", gap: 7, marginTop: 9 },
   settingRow: { minHeight: 78, paddingHorizontal: 14, paddingVertical: 12, flexDirection: "row", alignItems: "center", gap: 12 },
   settingIcon: { width: 38, height: 38, borderRadius: 13, backgroundColor: palette.sandDim, alignItems: "center", justifyContent: "center" },
   dangerIcon: { backgroundColor: "#4A2E34" },

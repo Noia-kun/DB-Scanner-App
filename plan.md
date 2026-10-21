@@ -41,3 +41,13 @@ Three possible directions were considered: “Doha Bank editorial banking” (0.
 - History filters are independent: all/QR/barcode plus all/today/this week. Search matches decoded payload or type.
 - Product lookup appears only for product-like numeric barcode values and opens a URL-shaped lookup action rather than silently leaving the app.
 - Accessibility labels and hints are attached to the segmented control, scan actions, result actions, settings rows, and history items.
+
+## Company-system extension
+
+The company integration uses a swappable `CompanyApi` contract in `lib/company-api.ts`. Because the real API base URL and auth method are not supplied yet, Preview defaults to a deterministic mock adapter with viewer, staff, and admin employee fixtures. A future HTTP adapter uses `EXPO_PUBLIC_COMPANY_API_BASE_URL` and `EXPO_PUBLIC_COMPANY_AUTH_METHOD` without changing screens or state management; expected routes are isolated in that adapter so the production endpoint mapping can be replaced in one file.
+
+`lib/company-store.tsx` owns secure session persistence, expiry/logout, employee attribution, cached item details, pending mutations, sync status, and automatic retry. Native tokens use `expo-secure-store`; Preview uses a local fallback so the mock flow remains reviewable. Every queued mutation contains employee ID/name/role, timestamp, old values, new values, and an expected version timestamp. Conflict and duplicate errors remain visible and never silently discard a queued action.
+
+The result route performs company lookup after local decoding. Found items render name, SKU, location, status, and last-updated metadata with role-gated Update location and Edit info actions. Unknown codes offer Add new item with the scanned code prefilled or Scan again. Offline lookup returns cached data only; unknown offline codes show an offline state rather than claiming the item does not exist. Add/edit forms require confirmation for overwrites and preserve pending sync state.
+
+New project modules are `lib/company-api.ts` for the adapter contract/mock/HTTP seam, `lib/company-store.tsx` for auth/cache/queue/sync state, and `app/login.tsx` for employee sign-in. The existing scanner, history, settings, light theme, accessibility labels, and large touch targets remain the primary shell.

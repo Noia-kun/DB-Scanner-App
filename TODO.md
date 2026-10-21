@@ -31,3 +31,18 @@
 ## 6. Doha Bank-inspired light balance
 - [x] Rebalance the app to a mostly white and soft-ivory foundation, using deep blue as the primary company color and sand beige as the signature highlight rather than treating the interface as a two-color dark theme.
 - [x] Preserve clear supporting neutrals and distinct utility colors for muted text, borders, warnings, offline state, and destructive actions across scanner, result, history, settings, navigation, splash, and adaptive icon surfaces.
+
+## 7. Company authentication and roles
+- [x] Provide a swappable company API/auth layer because the real API base URL and auth method are not yet supplied; default Preview to a mock adapter with viewer, staff, and admin employee fixtures.
+- [x] Let employees sign in with existing-account credentials, store tokens securely, detect expiry, support logout, and attribute every cloud action to the signed-in employee.
+- [x] Enforce viewer, staff, and admin permissions in both the client action gates and the API adapter: viewers can read, staff can add/update locations, and admins can edit item information.
+
+## 8. Company lookup and item actions
+- [x] After each local decode, look up the code through the company API and show found item name, SKU, location, status, and last-updated data.
+- [x] Found items provide role-gated Update location and Edit info actions; unknown codes offer Add new item with the scanned code pre-filled or Scan again.
+- [x] Confirm overwrites, reject or surface duplicate codes, and show conflict/error feedback without losing the user’s pending change.
+
+## 9. Offline integrity and sync
+- [x] Keep scanning and local history fully functional when the API is unavailable; cloud lookup degrades to cached data or an explicit offline state.
+- [x] Queue add/update actions while offline, sync automatically when connectivity returns, show queued/syncing/synced/error state, and never silently drop a queued action.
+- [x] Every cloud mutation records employee, timestamp, old values, and new values, including queued mutations that later sync.
