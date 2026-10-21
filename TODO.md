@@ -19,3 +19,7 @@
 ## 4. Settings and feedback
 - [x] Settings expose default mode, haptic feedback, sound feedback, auto-copy, dark mode, and clear-history controls.
 - [x] Large touch targets, accessible labels, responsive portrait layout, and smooth mode-toggle animation are applied throughout.
+
+## 5. Doha Bank-inspired visual theme
+- [x] Replace the existing green control-room palette with a Doha Bank-inspired palette using deep blue for the app canvas and structural surfaces and sand beige for active scan states and primary actions.
+- [x] Carry the revised palette through the scanner, result, history, settings, tab bar, native splash, and adaptive icon background while preserving readable contrast for text, warnings, offline state, and destructive actions.

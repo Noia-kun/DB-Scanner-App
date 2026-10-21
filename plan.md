@@ -22,16 +22,16 @@ Three possible directions were considered: “Night transit control room” (0.0
 
 - **Design Movement:** contemporary dark-mode control-room UI with crisp editorial typography and instrument-panel contrast.
 - **Core Principles:** glanceable hierarchy, confident affordances, visible system state, and generous one-handed touch targets.
-- **Color Philosophy:** near-black navy gives the camera surface depth; electric mint marks the active scan path; warm amber is reserved for caution and recovery; cool slate separates structure without flattening the dark canvas.
+- **Color Philosophy:** deep Doha Bank-inspired blue gives the camera surface depth and signals progress; sand beige marks the active scan path and primary actions; warm gold is reserved for caution and recovery; cool blue-gray separates structure without flattening the dark canvas.
 - **Layout Paradigm:** a portrait “instrument stack”: top utility rail, central scan chamber, bottom action dock, and short vertical sheets for results/settings rather than dense grids.
-- **Signature Elements:** mint corner brackets around the viewfinder, small uppercase state labels, and a soft “signal pulse” dot beside live status.
+- **Signature Elements:** sand-beige corner brackets around the viewfinder, small uppercase state labels, and a soft “signal pulse” dot beside live status.
 - **Interaction Philosophy:** each action confirms itself through a visible state change, tactile-sized controls, and short explanatory microcopy; mode changes keep the user in context.
-- **Animation:** mode switch uses a quick 180ms slide/fade; live status dots pulse subtly; result feedback uses a single mint flash and never blocks the next action.
+- **Animation:** mode switch uses a quick 180ms slide/fade; live status dots pulse subtly; result feedback uses a single sand-beige flash and never blocks the next action.
 - **Typography System:** system sans for navigation and labels, with bold condensed-feeling weight hierarchy created through letter spacing and uppercase metadata; readable 16–18px body copy.
 - **Brand Essence:** “The scanner that stays out of your way.” Precise, calm, ready.
 - **Brand Voice:** concise and reassuring. Example lines: “Hold steady. DBScan is watching for a code.” / “Readable signal. Choose what happens next.”
-- **Wordmark & Logo:** a compact mint square with two offset corner brackets, suggesting both a scan frame and a forward-moving route marker; the wordmark is set as `DBSCAN` with generous tracking.
-- **Signature Brand Color:** signal mint `#B8F36B`.
+- **Wordmark & Logo:** a compact sand-beige square with two offset corner brackets, suggesting both a scan frame and a forward-moving route marker; the wordmark is set as `DBSCAN` with generous tracking.
+- **Signature Brand Color:** Doha sand `#E8D4AE`, paired with deep blue `#062B49`.
 
 ## Functional decisions
 

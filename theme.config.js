@@ -1,14 +1,14 @@
 /** @type {const} */
 const themeColors = {
-  primary: { light: '#5D8A2F', dark: '#B8F36B' },
-  background: { light: '#F4F8ED', dark: '#07110F' },
-  surface: { light: '#FFFFFF', dark: '#0E1C19' },
-  foreground: { light: '#13201B', dark: '#F5F8F3' },
-  muted: { light: '#5E746A', dark: '#93A9A0' },
-  border: { light: '#CEDBCB', dark: '#28433A' },
-  success: { light: '#5D8A2F', dark: '#B8F36B' },
-  warning: { light: '#B5771A', dark: '#FFCA6A' },
-  error: { light: '#B94A42', dark: '#FF8D82' },
+  primary: { light: '#8A672F', dark: '#E8D4AE' },
+  background: { light: '#F5F1E8', dark: '#062B49' },
+  surface: { light: '#FFFDF8', dark: '#0B3A5B' },
+  foreground: { light: '#13283A', dark: '#FFF7E8' },
+  muted: { light: '#5B6E7B', dark: '#B7C8D3' },
+  border: { light: '#C9BFAE', dark: '#2C5F79' },
+  success: { light: '#8A672F', dark: '#E8D4AE' },
+  warning: { light: '#A96E1B', dark: '#F2C57C' },
+  error: { light: '#B94742', dark: '#FF8B7E' },
 };
 
 module.exports = { themeColors };

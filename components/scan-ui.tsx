@@ -3,17 +3,17 @@ import { Pressable, StyleSheet, Text, View, type PressableProps, type ViewStyle 
 import type { ScanMode } from "@/lib/scan-store";
 
 export const palette = {
-  canvas: "#07110F",
-  panel: "#0E1C19",
-  panelRaised: "#142722",
-  border: "#28433A",
-  text: "#F5F8F3",
-  muted: "#93A9A0",
-  mint: "#B8F36B",
-  mintDim: "#345522",
-  amber: "#FFCA6A",
-  danger: "#FF8D82",
-  purple: "#B9A2FF",
+  canvas: "#062B49",
+  panel: "#0B3A5B",
+  panelRaised: "#114866",
+  border: "#2C5F79",
+  text: "#FFF7E8",
+  muted: "#B7C8D3",
+  mint: "#E8D4AE",
+  mintDim: "#735D38",
+  amber: "#F2C57C",
+  danger: "#FF8B7E",
+  purple: "#9DC5DE",
 };
 
 export function AppMark({ compact = false }: { compact?: boolean }) {

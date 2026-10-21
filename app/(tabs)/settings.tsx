@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   card: { borderRadius: 20, backgroundColor: palette.panel, borderWidth: 1, borderColor: palette.border, overflow: "hidden" },
   settingRow: { minHeight: 78, paddingHorizontal: 14, paddingVertical: 12, flexDirection: "row", alignItems: "center", gap: 12 },
   settingIcon: { width: 38, height: 38, borderRadius: 13, backgroundColor: palette.mintDim, alignItems: "center", justifyContent: "center" },
-  dangerIcon: { backgroundColor: "#3A211F" },
+  dangerIcon: { backgroundColor: "#4A2E34" },
   settingCopy: { flex: 1 },
   settingTitle: { color: palette.text, fontSize: 14, fontWeight: "900" },
   settingDetail: { color: palette.muted, fontSize: 12, lineHeight: 17, marginTop: 3 },
