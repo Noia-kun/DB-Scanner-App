@@ -1,5 +1,6 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Pressable, StyleSheet, Text, View, type PressableProps, type ViewStyle } from "react-native";
+import Svg, { Circle, Path, Rect } from "react-native-svg";
 import type { ScanMode } from "@/lib/scan-store";
 
 export const palette = {
@@ -14,14 +15,23 @@ export const palette = {
   amber: "#F2C57C",
   danger: "#FF8B7E",
   purple: "#9DC5DE",
+  bankBlue: "#0B4F93",
+  sand: "#D9B78B",
+  ivory: "#FFF7E8",
 };
 
 export function AppMark({ compact = false }: { compact?: boolean }) {
   return (
-    <View style={[styles.mark, compact && styles.markCompact]} accessible accessibilityLabel="DBScan">
-      <View style={styles.markCornerTop} />
-      <View style={styles.markCornerBottom} />
-      {!compact && <Text style={styles.markText}>DBSCAN</Text>}
+    <View style={[styles.mark, compact && styles.markCompact]} accessible accessibilityLabel="Doha Bank Scan Edition">
+      <Svg width={compact ? 34 : 40} height={compact ? 34 : 40} viewBox="0 0 100 100">
+        <Rect x="16" y="16" width="68" height="68" rx="18" fill={palette.panel} stroke={palette.border} strokeWidth="1.5" />
+        <Path d="M30 20H23c-5 0-9 4-9 9v7M70 20h7c5 0 9 4 9 9v7M14 64v7c0 5 4 9 9 9h7M86 64v7c0 5-4 9-9 9h-7" fill="none" stroke={palette.mint} strokeWidth="4" strokeLinecap="round" />
+        <Rect x="30" y="30" width="40" height="40" rx="9" fill={palette.bankBlue} />
+        <Rect x="34" y="35" width="7" height="30" rx="3.5" fill={palette.sand} />
+        <Path d="M41 35c17 0 26 6 26 15s-9 15-26 15v-5c11 0 18-3 18-10s-7-10-18-10z" fill={palette.ivory} />
+        <Circle cx="50" cy="50" r="2.5" fill={palette.mint} />
+      </Svg>
+      {!compact && <View style={styles.wordmark}><Text style={styles.markText}>DOHA BANK</Text><Text style={styles.markSubtext}>SCAN EDITION</Text></View>}
     </View>
   );
 }
@@ -92,9 +102,9 @@ export function EmptyState({ icon, title, detail }: { icon: React.ComponentProps
 const styles = StyleSheet.create({
   mark: { flexDirection: "row", alignItems: "center", gap: 10 },
   markCompact: { gap: 0 },
-  markCornerTop: { width: 16, height: 16, borderTopWidth: 3, borderLeftWidth: 3, borderColor: palette.mint, borderRadius: 3 },
-  markCornerBottom: { position: "absolute", left: 9, top: 9, width: 16, height: 16, borderBottomWidth: 3, borderRightWidth: 3, borderColor: palette.mint, borderRadius: 3 },
-  markText: { color: palette.text, fontSize: 14, fontWeight: "800", letterSpacing: 3 },
+  wordmark: { gap: 1 },
+  markText: { color: palette.text, fontSize: 13, fontWeight: "900", letterSpacing: 1.6 },
+  markSubtext: { color: palette.mint, fontSize: 8, fontWeight: "900", letterSpacing: 2.1 },
   modeControl: { flexDirection: "row", backgroundColor: palette.panel, borderRadius: 16, borderWidth: 1, borderColor: palette.border, padding: 4, gap: 4 },
   modeOption: { minHeight: 42, minWidth: 92, paddingHorizontal: 14, borderRadius: 12, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 7 },
   modeOptionActive: { backgroundColor: palette.mint },

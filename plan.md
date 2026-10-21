@@ -13,8 +13,8 @@ The first implementation uses Expo Router + React Native + TypeScript + NativeWi
 - `app/(tabs)/settings.tsx`: default mode, haptic/sound, auto-copy, theme, and clear-history controls.
 - `app/(tabs)/_layout.tsx`: accessible bottom tab navigation and dark theme shell.
 - `lib/scan-store.ts`: shared scan types, sample state, and local persistence helpers.
-- `components/scan-ui.tsx`: reusable buttons, segmented control, result cards, and state badges.
-- `assets/images/*`: DBScan brand icon set used by Expo native configuration.
+- `components/scan-ui.tsx`: reusable buttons, segmented control, result cards, state badges, and the shared Doha Bank scanner mark.
+- `assets/images/*`: Doha Bank-inspired scanner brand icon set used by Expo native configuration.
 
 ## Design direction
 
@@ -24,14 +24,14 @@ Three possible directions were considered: “Night transit control room” (0.0
 - **Core Principles:** glanceable hierarchy, confident affordances, visible system state, and generous one-handed touch targets.
 - **Color Philosophy:** deep Doha Bank-inspired blue gives the camera surface depth and signals progress; sand beige marks the active scan path and primary actions; warm gold is reserved for caution and recovery; cool blue-gray separates structure without flattening the dark canvas.
 - **Layout Paradigm:** a portrait “instrument stack”: top utility rail, central scan chamber, bottom action dock, and short vertical sheets for results/settings rather than dense grids.
-- **Signature Elements:** sand-beige corner brackets around the viewfinder, small uppercase state labels, and a soft “signal pulse” dot beside live status.
+- **Signature Elements:** sand-beige corner brackets around the viewfinder, a Doha Bank-inspired blue-and-sand D sail inside the logo reticle, small uppercase state labels, and a soft “signal pulse” dot beside live status.
 - **Interaction Philosophy:** each action confirms itself through a visible state change, tactile-sized controls, and short explanatory microcopy; mode changes keep the user in context.
 - **Animation:** mode switch uses a quick 180ms slide/fade; live status dots pulse subtly; result feedback uses a single sand-beige flash and never blocks the next action.
 - **Typography System:** system sans for navigation and labels, with bold condensed-feeling weight hierarchy created through letter spacing and uppercase metadata; readable 16–18px body copy.
 - **Brand Essence:** “The scanner that stays out of your way.” Precise, calm, ready.
 - **Brand Voice:** concise and reassuring. Example lines: “Hold steady. DBScan is watching for a code.” / “Readable signal. Choose what happens next.”
-- **Wordmark & Logo:** a compact sand-beige square with two offset corner brackets, suggesting both a scan frame and a forward-moving route marker; the wordmark is set as `DBSCAN` with generous tracking.
-- **Signature Brand Color:** Doha sand `#E8D4AE`, paired with deep blue `#062B49`.
+- **Wordmark & Logo:** a deep-blue and sand D sail mark inspired by Doha Bank’s current identity, enclosed by a sand-beige scanner reticle; the wordmark reads `DOHA BANK` with a small `SCAN EDITION` qualifier so it is not a plain bank logo.
+- **Signature Brand Color:** Doha sand `#E8D4AE`, paired with deep blue `#062B49` and used as the scanner reticle around the adapted mark.
 
 ## Functional decisions
 

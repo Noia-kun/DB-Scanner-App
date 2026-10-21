@@ -1,1 +1,1 @@
-{"routes":[{"path":"/","title":"Scan"},{"path":"/history","title":"Scan history"},{"path":"/settings","title":"Settings"},{"path":"/result","title":"Scan result"},{"path":"/oauth/callback","title":"Authentication callback"}]}
+{"routes":[{"path":"/","title":"Scan"},{"path":"/history","title":"Scan history"},{"path":"/settings","title":"Settings"},{"path":"/result","title":"Scan result"},{"path":"/dev/theme-lab","title":"Theme lab"},{"path":"/oauth/callback","title":"Authentication callback"}]}
