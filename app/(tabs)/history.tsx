@@ -53,7 +53,7 @@ export default function HistoryScreen() {
         </View>
 
         {history.length === 0 ? <EmptyState icon="history" title="Your archive is clear" detail="Scanned codes will appear here. History stays on this device and works offline." /> : filtered.length === 0 ? <EmptyState icon="manage-search" title="Nothing matches" detail="Try a different keyword or reset one of the filters." /> : <View style={styles.list}>{filtered.map((item) => <Pressable key={item.id} onPress={() => router.push({ pathname: "/result", params: { id: item.id } })} style={({ pressed }) => [styles.historyCard, pressed && { opacity: 0.75 }]} accessibilityRole="button" accessibilityLabel={`Open ${item.type}, ${item.data}`} accessibilityHint="Double tap to view result actions">
-          <View style={[styles.typeIcon, item.type === "QR code" ? styles.qrIcon : styles.barcodeIcon]}><MaterialIcons name={item.type === "QR code" ? "qr-code-2" : "view-week"} size={22} color={palette.canvas} /></View>
+          <View style={[styles.typeIcon, item.type === "QR code" ? styles.qrIcon : styles.barcodeIcon]}><MaterialIcons name={item.type === "QR code" ? "qr-code-2" : "view-week"} size={22} color={palette.brand} /></View>
           <View style={styles.itemCopy}><View style={styles.itemMeta}><Text style={styles.itemType}>{item.type}</Text><Text style={styles.itemTime}>{formatScanTime(item.createdAt)}</Text></View><Text style={styles.itemData} numberOfLines={2}>{item.data}</Text></View>
           <MaterialIcons name="chevron-right" size={21} color={palette.muted} />
         </Pressable>)}</View>}
@@ -66,20 +66,20 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: palette.canvas },
   topBar: { paddingHorizontal: 20, flexDirection: "row", alignItems: "center" },
   backButton: { width: 44, height: 44, borderRadius: 14, borderWidth: 1, borderColor: palette.border, backgroundColor: palette.panel, alignItems: "center", justifyContent: "center" },
-  kicker: { color: palette.mint, fontSize: 10, fontWeight: "900", letterSpacing: 1.4 },
+  kicker: { color: palette.brand, fontSize: 10, fontWeight: "900", letterSpacing: 1.4 },
   title: { color: palette.text, fontSize: 28, fontWeight: "900", marginTop: 4 },
   searchBox: { margin: 20, marginTop: 24, minHeight: 54, borderRadius: 16, backgroundColor: palette.panel, borderWidth: 1, borderColor: palette.border, paddingHorizontal: 15, flexDirection: "row", alignItems: "center", gap: 9 },
   searchInput: { flex: 1, color: palette.text, fontSize: 15, paddingVertical: 10 },
   filterBlock: { paddingHorizontal: 20, gap: 10 },
   filterRow: { flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: 10 },
   filterChip: { paddingHorizontal: 14, minHeight: 38, borderRadius: 12, borderWidth: 1, borderColor: palette.border, backgroundColor: palette.panel, alignItems: "center", justifyContent: "center" },
-  filterChipActive: { backgroundColor: palette.mint, borderColor: palette.mint },
+  filterChipActive: { backgroundColor: palette.sand, borderColor: palette.sand },
   filterText: { color: palette.muted, fontSize: 12, fontWeight: "800" },
-  filterTextActive: { color: palette.canvas },
+  filterTextActive: { color: palette.brand },
   list: { paddingHorizontal: 20, paddingTop: 10, gap: 9 },
   historyCard: { minHeight: 84, borderRadius: 19, borderWidth: 1, borderColor: palette.border, backgroundColor: palette.panel, padding: 14, flexDirection: "row", alignItems: "center", gap: 12 },
   typeIcon: { width: 44, height: 44, borderRadius: 14, alignItems: "center", justifyContent: "center" },
-  qrIcon: { backgroundColor: palette.mint },
+  qrIcon: { backgroundColor: palette.sand },
   barcodeIcon: { backgroundColor: palette.amber },
   itemCopy: { flex: 1 },
   itemMeta: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },

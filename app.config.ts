@@ -66,7 +66,7 @@ const config: ExpoConfig = {
   orientation: "portrait",
   icon: "./assets/images/icon.png",
   scheme: env.scheme,
-  userInterfaceStyle: "automatic",
+  userInterfaceStyle: "light",
   ios: {
     supportsTablet: true,
     bundleIdentifier: env.iosBundleId,
@@ -76,7 +76,7 @@ const config: ExpoConfig = {
   },
   android: {
     adaptiveIcon: {
-      backgroundColor: "#062B49",
+      backgroundColor: "#FFFFFF",
       foregroundImage: "./assets/images/android-icon-foreground.png",
       backgroundImage: "./assets/images/android-icon-background.png",
       monochromeImage: "./assets/images/android-icon-monochrome.png",
@@ -131,9 +131,9 @@ const config: ExpoConfig = {
         image: "./assets/images/splash-icon.png",
         imageWidth: 200,
         resizeMode: "contain",
-        backgroundColor: "#062B49",
+        backgroundColor: "#FFFFFF",
         dark: {
-          backgroundColor: "#041F35",
+          backgroundColor: "#123B5A",
         },
       },
     ],

@@ -127,7 +127,7 @@ export default function ScannerScreen() {
               <MaterialIcons name={offline ? "cloud-off" : "cloud-queue"} size={20} color={offline ? palette.purple : palette.muted} />
             </Pressable>
             <Pressable onPress={() => router.push("/history")} style={styles.historyPill} accessibilityRole="button" accessibilityLabel={`Open scan history, ${countLabel}`}>
-              <MaterialIcons name="history" size={18} color={palette.mint} />
+              <MaterialIcons name="history" size={18} color={palette.brand} />
               <Text style={styles.historyCount}>{countLabel}</Text>
             </Pressable>
           </View>
@@ -208,7 +208,7 @@ export default function ScannerScreen() {
 
         <View style={styles.footerRow}>
           <Pressable onPress={() => setFeedback("offline")} style={styles.footerLink} accessibilityRole="button" accessibilityLabel="Show offline scanning status">
-            <MaterialIcons name="offline-bolt" size={17} color={palette.mint} />
+            <MaterialIcons name="offline-bolt" size={17} color={palette.brand} />
             <Text style={styles.footerLinkText}>Works offline</Text>
           </Pressable>
           <Pressable onPress={() => router.push("/settings")} style={styles.footerLink} accessibilityRole="button" accessibilityLabel="Open scanner settings">
@@ -226,7 +226,7 @@ export default function ScannerScreen() {
               <Text style={styles.kicker}>QUICK START · 10 SEC</Text>
               <Pressable onPress={finishOnboarding} accessibilityRole="button" accessibilityLabel="Skip scanner tutorial"><Text style={styles.skipText}>Skip</Text></Pressable>
             </View>
-            <View style={styles.tutorialIcon}><MaterialIcons name={tutorialStep === 0 ? "center-focus-strong" : tutorialStep === 1 ? "pan-tool" : "swap-horiz"} size={30} color={palette.canvas} /></View>
+            <View style={styles.tutorialIcon}><MaterialIcons name={tutorialStep === 0 ? "center-focus-strong" : tutorialStep === 1 ? "pan-tool" : "swap-horiz"} size={30} color={palette.brand} /></View>
             <Text style={styles.tutorialEyebrow}>{TUTORIAL[tutorialStep].eyebrow}</Text>
             <Text style={styles.tutorialTitle}>{TUTORIAL[tutorialStep].title}</Text>
             <Text style={styles.tutorialDetail}>{TUTORIAL[tutorialStep].detail}</Text>
@@ -244,31 +244,31 @@ const styles = StyleSheet.create({
   topBar: { paddingHorizontal: 20, flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
   topActions: { flexDirection: "row", alignItems: "center", gap: 10 },
   iconButton: { width: 42, height: 42, borderRadius: 14, backgroundColor: palette.panel, alignItems: "center", justifyContent: "center", borderWidth: 1, borderColor: palette.border },
-  iconButtonActive: { backgroundColor: "#1F4E6B", borderColor: "#6A89A0" },
+  iconButtonActive: { backgroundColor: "#E8F0F4", borderColor: "#7FA2B7" },
   historyPill: { minHeight: 42, borderRadius: 14, paddingHorizontal: 12, backgroundColor: palette.panel, borderWidth: 1, borderColor: palette.border, flexDirection: "row", alignItems: "center", gap: 7 },
   historyCount: { color: palette.text, fontSize: 12, fontWeight: "800" },
   headerCopy: { paddingHorizontal: 20, paddingTop: 24, paddingBottom: 18 },
-  kicker: { color: palette.mint, fontSize: 11, fontWeight: "900", letterSpacing: 1.7 },
+  kicker: { color: palette.brand, fontSize: 11, fontWeight: "900", letterSpacing: 1.7 },
   title: { color: palette.text, fontSize: 34, fontWeight: "900", letterSpacing: -1, marginTop: 7 },
   subtitle: { color: palette.muted, fontSize: 15, lineHeight: 22, marginTop: 7, maxWidth: 330 },
   modeRow: { paddingHorizontal: 20, flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 12, marginBottom: 16 },
   cameraShell: { marginHorizontal: 20, aspectRatio: 0.86, borderRadius: 28, overflow: "hidden", backgroundColor: "#0A3553", borderWidth: 1, borderColor: palette.border, position: "relative" },
   demoCamera: { ...StyleSheet.absoluteFill, backgroundColor: "#0D4565", alignItems: "center", justifyContent: "center", overflow: "hidden" },
   demoGlow: { position: "absolute", width: 220, height: 220, borderRadius: 110, backgroundColor: "#185776", opacity: 0.85 },
-  demoGrid: { ...StyleSheet.absoluteFill, opacity: 0.12, backgroundColor: "transparent", borderWidth: 1, borderColor: palette.mint },
+  demoGrid: { ...StyleSheet.absoluteFill, opacity: 0.12, backgroundColor: "transparent", borderWidth: 1, borderColor: palette.sand },
   demoCode: { width: 128, height: 128, backgroundColor: "#F3E4C4", borderRadius: 10, position: "relative", alignItems: "center", justifyContent: "center" },
   demoCodeFinder: { position: "absolute", width: 28, height: 28, top: 12, left: 12, borderWidth: 5, borderColor: "#062B49", borderRadius: 3 },
   demoCodeFinderRight: { left: undefined, right: 12 },
   demoCodeFinderBottom: { top: undefined, bottom: 12 },
   demoCodeBars: { width: 30, height: 56, borderLeftWidth: 5, borderRightWidth: 5, borderColor: "#062B49", opacity: 0.8 },
-  demoHint: { position: "absolute", bottom: 24, color: palette.mint, fontSize: 11, fontWeight: "800", letterSpacing: 1.1, textTransform: "uppercase" },
+  demoHint: { position: "absolute", bottom: 24, color: palette.brand, fontSize: 11, fontWeight: "800", letterSpacing: 1.1, textTransform: "uppercase" },
   frame: { ...StyleSheet.absoluteFill, margin: 38, borderRadius: 18 },
-  corner: { position: "absolute", width: 32, height: 32, borderColor: palette.mint, borderWidth: 3 },
+  corner: { position: "absolute", width: 32, height: 32, borderColor: palette.sand, borderWidth: 3 },
   cornerTL: { top: 0, left: 0, borderRightWidth: 0, borderBottomWidth: 0, borderTopLeftRadius: 10 },
   cornerTR: { top: 0, right: 0, borderLeftWidth: 0, borderBottomWidth: 0, borderTopRightRadius: 10 },
   cornerBL: { bottom: 0, left: 0, borderRightWidth: 0, borderTopWidth: 0, borderBottomLeftRadius: 10 },
   cornerBR: { bottom: 0, right: 0, borderLeftWidth: 0, borderTopWidth: 0, borderBottomRightRadius: 10 },
-  scanLine: { position: "absolute", top: "48%", left: 0, right: 0, height: 2, backgroundColor: palette.mint, opacity: 0.65 },
+  scanLine: { position: "absolute", top: "48%", left: 0, right: 0, height: 2, backgroundColor: palette.sand, opacity: 0.65 },
   cameraTopStatus: { position: "absolute", top: 18, left: 18, right: 18, flexDirection: "row", justifyContent: "space-between" },
   feedbackCard: { position: "absolute", left: 14, right: 14, bottom: 14, borderRadius: 18, backgroundColor: "rgba(6,43,73,0.94)", borderWidth: 1, borderColor: palette.border, padding: 14, flexDirection: "row", alignItems: "flex-start", gap: 10 },
   feedbackTitle: { color: palette.text, fontSize: 13, fontWeight: "800" },
@@ -279,18 +279,18 @@ const styles = StyleSheet.create({
   bottomActions: { paddingHorizontal: 20, paddingTop: 16, flexDirection: "row", gap: 8 },
   footerRow: { paddingHorizontal: 22, paddingTop: 17, flexDirection: "row", justifyContent: "space-between" },
   footerLink: { flexDirection: "row", alignItems: "center", gap: 6, paddingVertical: 6 },
-  footerLinkText: { color: palette.mint, fontSize: 13, fontWeight: "800" },
+  footerLinkText: { color: palette.brand, fontSize: 13, fontWeight: "800" },
   footerLinkTextMuted: { color: palette.muted, fontSize: 13, fontWeight: "700" },
   tutorialBackdrop: { ...StyleSheet.absoluteFill, backgroundColor: "rgba(1,19,32,0.72)", justifyContent: "flex-end", zIndex: 5 },
   tutorialSheet: { backgroundColor: palette.panel, borderTopLeftRadius: 30, borderTopRightRadius: 30, borderTopWidth: 1, borderColor: palette.border, paddingHorizontal: 24, paddingTop: 12 },
   sheetHandle: { width: 42, height: 4, borderRadius: 4, backgroundColor: palette.border, alignSelf: "center", marginBottom: 20 },
   tutorialHeader: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
   skipText: { color: palette.muted, fontSize: 13, fontWeight: "800", padding: 6 },
-  tutorialIcon: { width: 62, height: 62, borderRadius: 22, backgroundColor: palette.mint, alignItems: "center", justifyContent: "center", marginTop: 20 },
-  tutorialEyebrow: { color: palette.mint, fontSize: 12, fontWeight: "900", letterSpacing: 1.2, marginTop: 20 },
+  tutorialIcon: { width: 62, height: 62, borderRadius: 22, backgroundColor: palette.sand, alignItems: "center", justifyContent: "center", marginTop: 20 },
+  tutorialEyebrow: { color: palette.brand, fontSize: 12, fontWeight: "900", letterSpacing: 1.2, marginTop: 20 },
   tutorialTitle: { color: palette.text, fontSize: 28, fontWeight: "900", marginTop: 7 },
   tutorialDetail: { color: palette.muted, fontSize: 15, lineHeight: 22, marginTop: 9, marginBottom: 20 },
   tutorialDots: { flexDirection: "row", gap: 6, marginBottom: 18 },
   tutorialDot: { width: 7, height: 7, borderRadius: 4, backgroundColor: palette.border },
-  tutorialDotActive: { width: 22, backgroundColor: palette.mint },
+  tutorialDotActive: { width: 22, backgroundColor: palette.sand },
 });

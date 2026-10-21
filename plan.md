@@ -18,20 +18,20 @@ The first implementation uses Expo Router + React Native + TypeScript + NativeWi
 
 ## Design direction
 
-Three possible directions were considered: “Night transit control room” (0.08), “Soft glass wellness utility” (0.06), and “Editorial paper archive” (0.03). The selected direction is **Night transit control room**.
+Three possible directions were considered: “Doha Bank editorial banking” (0.08), “Soft glass wellness utility” (0.06), and “Night transit control room” (0.03). The selected direction is **Doha Bank editorial banking**.
 
-- **Design Movement:** contemporary dark-mode control-room UI with crisp editorial typography and instrument-panel contrast.
-- **Core Principles:** glanceable hierarchy, confident affordances, visible system state, and generous one-handed touch targets.
-- **Color Philosophy:** deep Doha Bank-inspired blue gives the camera surface depth and signals progress; sand beige marks the active scan path and primary actions; warm gold is reserved for caution and recovery; cool blue-gray separates structure without flattening the dark canvas.
-- **Layout Paradigm:** a portrait “instrument stack”: top utility rail, central scan chamber, bottom action dock, and short vertical sheets for results/settings rather than dense grids.
-- **Signature Elements:** sand-beige corner brackets around the viewfinder, small uppercase state labels, and a soft “signal pulse” dot beside live status.
+- **Design Movement:** editorial banking interface with a mostly white canvas, deep-blue typography, and warm sand-beige highlight surfaces.
+- **Core Principles:** calm clarity, confident affordances, visible system state, and generous one-handed touch targets.
+- **Color Philosophy:** white and soft ivory create the open, trustworthy base seen in Doha Bank’s web presence; deep blue anchors headings, navigation, and scan structure; sand beige highlights active controls and branded moments; restrained utility colors preserve meaning for warnings, offline state, and destructive actions.
+- **Layout Paradigm:** a portrait “service panel”: slim top utility rail, central scan chamber, bottom action dock, and short vertical sheets for results/settings rather than dense grids.
+- **Signature Elements:** deep-blue corner brackets over a light camera surface, sand-beige circular/icon accents, and small uppercase state labels.
 - **Interaction Philosophy:** each action confirms itself through a visible state change, tactile-sized controls, and short explanatory microcopy; mode changes keep the user in context.
 - **Animation:** mode switch uses a quick 180ms slide/fade; live status dots pulse subtly; result feedback uses a single sand-beige flash and never blocks the next action.
 - **Typography System:** system sans for navigation and labels, with bold condensed-feeling weight hierarchy created through letter spacing and uppercase metadata; readable 16–18px body copy.
 - **Brand Essence:** “The scanner that stays out of your way.” Precise, calm, ready.
 - **Brand Voice:** concise and reassuring. Example lines: “Hold steady. DBScan is watching for a code.” / “Readable signal. Choose what happens next.”
 - **Wordmark & Logo:** a compact sand-beige square with two offset corner brackets, suggesting both a scan frame and a forward-moving route marker; the wordmark is set as `DBSCAN` with generous tracking.
-- **Signature Brand Color:** Doha sand `#E8D4AE`, paired with deep blue `#062B49`.
+- **Signature Brand Color:** deep blue `#123B5A`, paired with Doha sand `#D6C5B0`.
 
 ## Functional decisions
 
