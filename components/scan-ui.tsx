@@ -22,7 +22,7 @@ export const palette = {
 
 export function AppMark({ compact = false }: { compact?: boolean }) {
   return (
-    <View style={[styles.mark, compact && styles.markCompact]} accessible accessibilityLabel="Doha Bank Scan Edition">
+    <View style={[styles.mark, compact && styles.markCompact]} accessible accessibilityLabel="Doha Bank Scan Smart Scanner">
       <Svg width={compact ? 34 : 40} height={compact ? 34 : 40} viewBox="0 0 100 100">
         <Rect x="16" y="16" width="68" height="68" rx="18" fill={palette.panel} stroke={palette.border} strokeWidth="1.5" />
         <Path d="M30 20H23c-5 0-9 4-9 9v7M70 20h7c5 0 9 4 9 9v7M14 64v7c0 5 4 9 9 9h7M86 64v7c0 5-4 9-9 9h-7" fill="none" stroke={palette.mint} strokeWidth="4" strokeLinecap="round" />
@@ -31,7 +31,7 @@ export function AppMark({ compact = false }: { compact?: boolean }) {
         <Path d="M41 35c17 0 26 6 26 15s-9 15-26 15v-5c11 0 18-3 18-10s-7-10-18-10z" fill={palette.ivory} />
         <Circle cx="50" cy="50" r="2.5" fill={palette.mint} />
       </Svg>
-      {!compact && <View style={styles.wordmark}><Text style={styles.markText}>DOHA BANK</Text><Text style={styles.markSubtext}>SCAN EDITION</Text></View>}
+      {!compact && <View style={styles.wordmark}><Text style={styles.markText}>DOHA BANK SCAN</Text><Text style={styles.markSubtext}>Smart Scanner</Text></View>}
     </View>
   );
 }

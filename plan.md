@@ -30,7 +30,7 @@ Three possible directions were considered: “Night transit control room” (0.0
 - **Typography System:** system sans for navigation and labels, with bold condensed-feeling weight hierarchy created through letter spacing and uppercase metadata; readable 16–18px body copy.
 - **Brand Essence:** “The scanner that stays out of your way.” Precise, calm, ready.
 - **Brand Voice:** concise and reassuring. Example lines: “Hold steady. DBScan is watching for a code.” / “Readable signal. Choose what happens next.”
-- **Wordmark & Logo:** a deep-blue and sand D sail mark inspired by Doha Bank’s current identity, enclosed by a sand-beige scanner reticle; the wordmark reads `DOHA BANK` with a small `SCAN EDITION` qualifier so it is not a plain bank logo.
+- **Wordmark & Logo:** a deep-blue and sand D sail mark inspired by Doha Bank’s current identity, enclosed by a sand-beige scanner reticle; the wordmark reads `DOHA BANK SCAN` with a small `Smart Scanner` qualifier so it is not a plain bank logo.
 - **Signature Brand Color:** Doha sand `#E8D4AE`, paired with deep blue `#062B49` and used as the scanner reticle around the adapted mark.
 
 ## Functional decisions

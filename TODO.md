@@ -2,7 +2,7 @@
 
 ## 0. Doha Bank-inspired scanner identity
 - [x] Replace the current DBScan corner-bracket logo with a Doha Bank-inspired deep-blue and sand D sail mark.
-- [x] Add a sand-beige scanner border/reticle around the mark and a `SCAN EDITION` qualifier so the app logo is distinct from the plain Doha Bank logo.
+- [x] Add a sand-beige scanner border/reticle around the mark and a `Smart Scanner` qualifier after `DOHA BANK SCAN` so the app logo is distinct from the plain Doha Bank logo.
 
 ## 1. Camera scanner and onboarding
 - [x] First-run onboarding requests camera permission and presents a concise 10-second scanning tutorial, including a clear re-request path when permission is denied.
