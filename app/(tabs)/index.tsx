@@ -3,9 +3,9 @@ import * as Clipboard from "expo-clipboard";
 import { createAudioPlayer } from "expo-audio";
 import * as Haptics from "expo-haptics";
 import * as ImagePicker from "expo-image-picker";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useFocusEffect, useLocalSearchParams, useRouter } from "expo-router";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -43,7 +43,13 @@ export default function ScannerScreen() {
   const [tutorialStep, setTutorialStep] = useState(0);
   const [feedback, setFeedback] = useState<Feedback | null>("warmup");
   const [offline, setOffline] = useState(false);
-  const [scanning, setScanning] = useState(false);
+  const scanLock = useRef(false);
+  useFocusEffect(
+    useCallback(() => { 
+      scanLock.current = false;
+      return () => { scanLock.current = true; };
+    }, []),
+  );
   const showTutorial = isHydrated && !onboardingSeen;
 
   useEffect(() => {
@@ -72,20 +78,20 @@ export default function ScannerScreen() {
     const normalized = data.trim();
     if (!normalized) {
       setFeedback("unrecognized");
-      setScanning(false);
+      scanLock.current = false;
       return;
     }
     if (settings.haptic) void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     if (settings.sound) playScanSuccessTone();
     if (settings.autoCopy) await Clipboard.setStringAsync(normalized);
     const item = addScan({ data: normalized, mode: activeMode, type: activeMode === "qr" ? "QR code" : "Barcode" });
-    setScanning(false);
     router.push({ pathname: "/result", params: { id: item.id } });
   };
 
-  const handleBarcodeScanned = ({ data }: BarcodeScanningResult) => {
-    if (scanning) return;
-    setScanning(true);
+  const handleBarcodeScanned = ({ data, type }: BarcodeScanningResult) => {
+    if (scanLock.current) return;
+    if ((activeMode === "qr") !== (type === "qr")) return;
+    scanLock.current = true;
     void saveDecoded(data);
   };
 
@@ -114,7 +120,7 @@ export default function ScannerScreen() {
     setMode(nextMode);
     router.setParams({ mode: undefined });
     setFeedback(null);
-    setScanning(false);
+    scanLock.current = false;
   };
 
   return (
@@ -149,7 +155,8 @@ export default function ScannerScreen() {
             <CameraView
               style={StyleSheet.absoluteFill}
               facing="back"
-              onBarcodeScanned={scanning ? undefined : handleBarcodeScanned}
+              key={activeMode}
+              onBarcodeScanned={handleBarcodeScanned}
               barcodeScannerSettings={{ barcodeTypes }}
               onCameraReady={() => setFeedback(null)}
             />
