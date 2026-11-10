@@ -155,7 +155,6 @@ export default function ScannerScreen() {
             <CameraView
               style={StyleSheet.absoluteFill}
               facing="back"
-              key={activeMode}
               onBarcodeScanned={handleBarcodeScanned}
               barcodeScannerSettings={{ barcodeTypes }}
               onCameraReady={() => setFeedback(null)}
