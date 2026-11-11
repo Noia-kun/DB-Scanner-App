@@ -12,6 +12,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ActionButton, AppMark, ModeSegmentedControl, palette, StatusPill } from "@/components/scan-ui";
 import { BARCODE_TYPES, useScanStore, type ScanMode } from "@/lib/scan-store";
 
+const ALL_TYPES = ["qr", ...BARCODE_TYPES] as BarcodeType[];
+
 const TUTORIAL = [
   { eyebrow: "01 / 03", title: "Center the code", detail: "Place a QR or barcode inside the sand frame. DBScan will detect it locally." },
   { eyebrow: "02 / 03", title: "Hold steady", detail: "A clean, even surface helps the decoder read tiny details in low light." },
@@ -156,7 +158,7 @@ export default function ScannerScreen() {
               style={StyleSheet.absoluteFill}
               facing="back"
               onBarcodeScanned={handleBarcodeScanned}
-              barcodeScannerSettings={{ barcodeTypes }}
+              barcodeScannerSettings={{ barcodeTypes: ALL_TYPES }}
               onCameraReady={() => setFeedback(null)}
             />
           ) : (
