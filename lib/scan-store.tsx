@@ -18,7 +18,6 @@ export type ScanSettings = {
   haptic: boolean;
   sound: boolean;
   autoCopy: boolean;
-  darkMode: boolean;
 };
 
 const HISTORY_KEY = "scanly.history.v1";
@@ -30,7 +29,6 @@ const DEFAULT_SETTINGS: ScanSettings = {
   haptic: true,
   sound: true,
   autoCopy: false,
-  darkMode: true,
 };
 
 const DEMO_HISTORY: ScanRecord[] = [
