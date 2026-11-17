@@ -20,9 +20,9 @@ export type ScanSettings = {
   autoCopy: boolean;
 };
 
-const HISTORY_KEY = "scanly.history.v1";
-const SETTINGS_KEY = "scanly.settings.v1";
-const ONBOARDING_KEY = "scanly.onboarding.v1";
+const HISTORY_KEY = "dbscan.history.v1";
+const SETTINGS_KEY = "dbscan.settings.v1";
+const ONBOARDING_KEY = "dbscan.onboarding.v1";
 
 const DEFAULT_SETTINGS: ScanSettings = {
   defaultMode: "qr",
@@ -34,7 +34,7 @@ const DEFAULT_SETTINGS: ScanSettings = {
 const DEMO_HISTORY: ScanRecord[] = [
   {
     id: "demo-1",
-    data: "https://scanly.app/launch",
+    data: "https://dbscan.company/item/1001",
     type: "QR code",
     mode: "qr",
     createdAt: new Date(Date.now() - 1000 * 60 * 42).toISOString(),

@@ -98,7 +98,7 @@ export default function ScannerScreen() {
   };
 
   const demoScan = () => {
-    void saveDecoded(mode === "qr" ? "https://scanly.app/launch" : "036000291452");
+    void saveDecoded(mode === "qr" ? "https://dbscan.company/item/1001" : "036000291452");
   };
 
   const importFromGallery = async () => {
