@@ -28,7 +28,7 @@ const schemeFromBundleId = `manus${timestamp}`;
 
 const env = {
   // App branding - update these values directly (do not use env vars)
-  appName: "DBScan -- Smart Scanner",
+  appName: "DBScan - Smart Scanner",
   appSlug: "scanly",
   // Durable project branding URL used by the managed project metadata.
   logoUrl: "https://files.manuscdn.com/user_upload_by_module/session_file/310519664036008756/qJXdepYAyPjmamir.png",
